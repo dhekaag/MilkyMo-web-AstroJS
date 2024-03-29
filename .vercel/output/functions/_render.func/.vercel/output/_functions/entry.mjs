@@ -5,7 +5,7 @@ import {
 	L as Logger,
 	A as AstroIntegrationLogger,
 	manifest,
-} from "./manifest_Dkc8I0Sx.mjs";
+} from "./manifest_Cy8KUiE4.mjs";
 import {
 	A as AstroError,
 	R as ResponseSentError,
@@ -2292,7 +2292,7 @@ const _manifest = Object.assign(manifest, {
 	middleware: onRequest,
 });
 const _args = {
-	middlewareSecret: "10c3ad9c-24c6-494a-8b73-9956c6e96615",
+	middlewareSecret: "17dbf274-2d97-44c5-a164-e8c4633b855b",
 };
 const _exports = createExports(_manifest, _args);
 const __astrojsSsrVirtualEntry = _exports.default;
