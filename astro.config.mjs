@@ -10,12 +10,12 @@ import { VitePWA } from "vite-plugin-pwa";
 import { manifest, seoConfig } from "./utils/seoConfig";
 import node from "@astrojs/node";
 
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 
 // https://astro.build/config
 export default defineConfig({
 	site: seoConfig.baseURL,
-	output: "server",
+	output: "static",
 	integrations: [
 		tailwind({
 			configFile: "./tailwind.config.js",
@@ -41,5 +41,9 @@ export default defineConfig({
 			}),
 		],
 	},
-	adapter: vercel(),
+	adapter: vercel({
+		webAnalytics: {
+			enabled: true,
+		},
+	}),
 });
