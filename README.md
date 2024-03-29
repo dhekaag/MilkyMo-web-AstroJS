@@ -1,6 +1,5 @@
 <img align="center" width="1725" alt="Screen Shot 2022-09-03 at 10 09 25 AM" src="https://user-images.githubusercontent.com/5169985/188276737-322f1e21-08a9-4b84-8a83-b394507f302d.png">
 
-
 <h1 align="center">🟢 astro-pwa-starter</h1>
 
 <p align="center">An opinionated Astro starter for building robust static websites.</p>
@@ -32,8 +31,8 @@ Here is a list of core dependencies that astro-pwa-starter relies on in case you
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
+| Command                 | Action                                             |
+| :---------------------- | :------------------------------------------------- |
 | `pnpm install`          | Installs dependencies                              |
 | `pnpm run dev`          | Starts local dev server at `localhost:3000`        |
 | `pnpm run build`        | Build your production site to `./dist/`            |
@@ -99,7 +98,7 @@ You'll notice we also threw in a `index.ts` file. This is where you should expor
 ```ts
 // index.ts
 
-export { default as HelloWorld } from "./HelloWorld.astro"
+export { default as HelloWorld } from "./HelloWorld.astro";
 ```
 
 Doing a directory-based approach and named export is good for two reasons:
@@ -110,7 +109,7 @@ Doing a directory-based approach and named export is good for two reasons:
 When you want to use `<HelloWorld />`, you can import it using our handy-dandy import aliases:
 
 ```ts
-import { HelloWorld } from "@component/HelloWorld"
+import { HelloWorld } from "@component/HelloWorld";
 ```
 
 Again, we'll talk about import aliasing in more detail in a bit!
@@ -213,15 +212,15 @@ One the best features of astro-pwa-starter is its extensive list of import alias
 For those unfamiliar with import aliases, they make working with components and external assets much easier. Instead of having to directly reference an asset like such:
 
 ```ts
-import { MyComponent } from "../../components/MyComponent"
-import SomeImage from "../../assets/img/some-image.png"
+import { MyComponent } from "../../components/MyComponent";
+import SomeImage from "../../assets/img/some-image.png";
 ```
 
 You instead can do something more streamlined:
 
 ```ts
-import { MyComponent } from "@component/MyComponent"
-import SomeImage from "@img/some-image.png"
+import { MyComponent } from "@component/MyComponent";
+import SomeImage from "@img/some-image.png";
 ```
 
 The best part about this is that **you can use an import alias at any level in your website** and still be able to access the asset you're trying to reach. No more `../../../../` hell.
@@ -471,7 +470,7 @@ The default configuration is:
 
 ```ts
 // Type imports
-import type { ManifestOptions } from "vite-plugin-pwa"
+import type { ManifestOptions } from "vite-plugin-pwa";
 
 /**
  * Defines the default SEO configuration for the website.
@@ -485,13 +484,13 @@ export const seoConfig = {
 		url: "https://picsum.photos/1200/630", // Change this to your website's thumbnail.
 		alt: "OpenGraph thumbnail description.", // Change this to your website's thumbnail description.
 		width: 1200,
-		height: 630
+		height: 630,
 	},
 	siteName: "Astro PWA Starter", // Change this to your website's name,
 	twitter: {
-		card: "summary_large_image"
-	}
-}
+		card: "summary_large_image",
+	},
+};
 
 /**
  * Defines the configuration for PWA webmanifest.
@@ -508,21 +507,21 @@ export const manifest: Partial<ManifestOptions> = {
 		{
 			src: "/favicons/favicon-192x192.png",
 			sizes: "192x192",
-			type: "image/png"
-		},
-		{
-			src: "/favicons/favicon-512x512.png",
-			sizes: "512x512",
-			type: "image/png"
+			type: "image/png",
 		},
 		{
 			src: "/favicons/favicon-512x512.png",
 			sizes: "512x512",
 			type: "image/png",
-			purpose: "any maskable"
-		}
-	]
-}
+		},
+		{
+			src: "/favicons/favicon-512x512.png",
+			sizes: "512x512",
+			type: "image/png",
+			purpose: "any maskable",
+		},
+	],
+};
 ```
 
 ---

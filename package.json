@@ -3,12 +3,18 @@
 	"version": "1.0.0",
 	"private": false,
 	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"prepare": "husky install"
+		"format": "prettier --write .",
+		"check-types": "tsc --pretty --noEmit",
+		"check-format": "prettier --check .",
+		"check-lint": "eslint . --ext ts --ext tsx --ext js",
+		"prepare": "husky install",
+		"vercel-build": "tsc"
 	},
 	"devDependencies": {
 		"@astrojs/sitemap": "^2.0.2",

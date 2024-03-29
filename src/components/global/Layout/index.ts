@@ -1,3 +1,1 @@
-export { default as Layout } from "../Layout/Layout.astro"
-
-
+export { default as Layout } from "../Layout/Layout.astro";
