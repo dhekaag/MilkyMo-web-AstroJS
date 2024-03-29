@@ -331,7 +331,7 @@ const manifest = deserializeManifest({
 		"/node_modules/astro/dist/assets/endpoint/generic.js":
 			"chunks/pages/generic_DSHhnWzA.mjs",
 		"/src/pages/index.astro": "chunks/pages/index_FBDEn7de.mjs",
-		"\u0000@astrojs-manifest": "manifest_Dkc8I0Sx.mjs",
+		"\u0000@astrojs-manifest": "manifest_Cy8KUiE4.mjs",
 		"\u0000@astro-page:node_modules/astro/dist/assets/endpoint/generic@_@js":
 			"chunks/generic_waO3A3a7.mjs",
 		"\u0000@astro-page:src/pages/home@_@astro": "chunks/home_DaFLBFMj.mjs",
