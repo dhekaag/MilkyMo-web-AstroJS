@@ -1,67 +1,177 @@
 ---
 // Component imports
-import { Layout } from "@globals"
+import { Layout } from "@globals";
+
+if (Astro.request.method === "POST") {
+	const formData = await Astro.request.formData();
+	const id_peternak: string = formData.get("userId") as string;
+	const password: string = formData.get("password") as string;
+	const data = { id_peternak, password };
+	console.log(`userId: ${id_peternak} password : ${password}`);
+	const server_url: string = import.meta.env.API_URL;
+
+	try {
+		const response: Response = await fetch(server_url + "users/login", {
+			method: "POST",
+			body: JSON.stringify(data),
+			headers: {
+				"Content-type": "application/json",
+			},
+		});
+
+		console.log("response status : " + response.status);
+
+		if (response.status === 200) {
+			return Astro.redirect("/home");
+		}
+	} catch (error) {
+		console.log(error);
+	}
+}
 ---
 
-<Layout title="Astro PWA Starter">
-	<section class="p-6 flex-1 flex flex-col justify-between">
-		<!-- Welcome -->
-		<div
-			class="max-w-xl mx-auto flex flex-col justify-center flex-1 space-y-10"
-		>
-			<div class="space-y-2 text-center">
-				<h1 class="text-4xl font-semibold">🟢 astro-pwa-starter</h1>
-				<p class="italic">
-					It works! Check out <span class="p-1 rounded-lg bg-gray-100 font-mono"
-						>/src/pages</span
-					> to get started.
-				</p>
-			</div>
-			<div>
-				<ul class="grid md:grid-cols-2 gap-4">
-					<li>
-						<a
-							href="https://github.com/shaunchander/astro-pwa-starter#-getting-started-guide"
-							class="p-6 rounded-2xl border border-gray-500 flex flex-col text-center hover:bg-blue-500 focus:bg-blue-500 hover:text-white duration-300 ease-in-out transition hover:border-blue-500 focus:border-blue-500"
-						>
-							<span class="text-xl font-medium">🚀 Getting started guide</span>
-						</a>
-					</li>
-					<li>
-						<a
-							href="https://github.com/shaunchander/astro-pwa-starter#-documentation"
-							class="p-6 rounded-2xl border border-gray-500 flex flex-col text-center hover:bg-blue-500 focus:bg-blue-500 hover:text-white duration-300 ease-in-out transition hover:border-blue-500 focus:border-blue-500"
-						>
-							<span class="text-xl font-medium">📖 Documentation</span>
-						</a>
-					</li>
-				</ul>
-			</div>
+<Layout title="milkymo">
+	<div class="container">
+		<!-- <div class="brand-logo"></div> -->
+		<div class="brand-title">MILKYMO</div>
+		<div class="inputs">
+			<form method="POST">
+				<label>ID PETERNAK</label>
+				<input type="text" name="userId" placeholder="Masukkan id peternak" />
+				<label>PASSWORD</label>
+				<input
+					type="password"
+					name="password"
+					placeholder="Masukkan password"
+				/>
+				<button type="submit">LOGIN</button>
+			</form>
 		</div>
+	</div>
 
-		<!-- Twitter -->
-		<div class="flex justify-center">
-			<a
-				href="https://twitter.com/shaunchander"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="relative inline-flex items-center rounded-full bg-gray-100 p-4 transition duration-300 ease-in-out hover:-translate-y-2 focus:-translate-y-2 group hover:text-white focus:text-white"
-			>
-				<div class="flex items-center space-x-4 relative z-10">
-					<img
-						src="https://pbs.twimg.com/profile_images/1626068871034667008/tc7dNg2B_400x400.jpg"
-						width={48}
-						height={48}
-						class="rounded-full object-cover"
-						alt=""
-					/>
-					<span class="text-lg font-bold">Built by @shaunchander</span>
-				</div>
-				<div
-					class="inline-block rounded-full absolute inset-0 bg-gradient-to-tr from-[#07f49e] to-[#42047e] opacity-0 group-hover:opacity-100 group-focus:opacity-100 duration-300 ease-in-out transition"
-				>
-				</div>
-			</a>
-		</div>
-	</section>
+	<style>
+		@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap");
+		body {
+			margin: 0;
+			width: 100vw;
+			height: 100vh;
+			background: #ecf0f3;
+			display: flex;
+			align-items: center;
+			text-align: center;
+			justify-content: center;
+			place-items: center;
+			overflow: hidden;
+			font-family: poppins;
+		}
+
+		.container {
+			position: relative;
+			width: 350px;
+			height: 400px;
+			border-radius: 20px;
+			padding: 40px;
+			box-sizing: border-box;
+			background: #ecf0f3;
+			box-shadow:
+				14px 14px 20px #cbced1,
+				-14px -14px 20px white;
+		}
+
+		.brand-logo {
+			height: 100px;
+			width: 100px;
+			background: url("https://img.icons8.com/color/100/000000/twitter--v2.png");
+			margin: auto;
+			border-radius: 50%;
+			box-sizing: border-box;
+			box-shadow:
+				7px 7px 10px #cbced1,
+				-7px -7px 10px white;
+		}
+
+		.brand-title {
+			margin-top: 10px;
+			font-weight: 900;
+			font-size: 1.8rem;
+			color: #1da1f2;
+			letter-spacing: 1px;
+		}
+
+		.inputs {
+			text-align: left;
+			margin-top: 30px;
+		}
+
+		label,
+		input,
+		button {
+			display: block;
+			width: 100%;
+			padding: 0;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+		}
+
+		label {
+			margin-bottom: 4px;
+		}
+
+		label:nth-of-type(2) {
+			margin-top: 12px;
+		}
+
+		input::placeholder {
+			color: gray;
+		}
+
+		input {
+			background: #ecf0f3;
+			padding: 10px;
+			padding-left: 20px;
+			height: 50px;
+			font-size: 14px;
+			border-radius: 50px;
+			box-shadow:
+				inset 6px 6px 6px #cbced1,
+				inset -6px -6px 6px white;
+		}
+
+		button {
+			color: white;
+			margin-top: 30px;
+			background: #1da1f2;
+			height: 40px;
+			border-radius: 20px;
+			cursor: pointer;
+			font-weight: 900;
+			box-shadow:
+				6px 6px 6px #cbced1,
+				-6px -6px 6px white;
+			transition: 0.5s;
+		}
+
+		button:hover {
+			box-shadow: none;
+		}
+
+		a {
+			position: absolute;
+			font-size: 8px;
+			bottom: 4px;
+			right: 4px;
+			text-decoration: none;
+			color: black;
+			background: yellow;
+			border-radius: 10px;
+			padding: 2px;
+		}
+
+		h1 {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
 </Layout>
