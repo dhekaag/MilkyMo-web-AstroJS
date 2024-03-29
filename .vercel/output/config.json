@@ -10,18 +10,6 @@
 		},
 		{
 			"handle": "filesystem"
-		},
-		{
-			"src": "^\\/_image$",
-			"dest": "_render"
-		},
-		{
-			"src": "^\\/home\\/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^\\/$",
-			"dest": "_render"
 		}
 	]
 }
