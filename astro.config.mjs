@@ -14,7 +14,7 @@ import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
-	// site: seoConfig.baseURL,
+	site: seoConfig.baseURL,
 	output: "server",
 	integrations: [
 		tailwind({
